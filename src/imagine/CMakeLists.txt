@@ -1,8 +1,10 @@
 set(CPP_FILES
+     math/interpolation.cpp
      main.cpp
    )
 
-SET(INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
+SET(INCLUDE_DIR
+    ${CMAKE_CURRENT_SOURCE_DIR}/math)
 
 set(EXTRA_COMP_FLAGS
      -Werror
