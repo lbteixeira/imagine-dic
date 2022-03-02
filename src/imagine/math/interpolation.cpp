@@ -3,7 +3,8 @@
 
 namespace Imagine {
   namespace Math {
-    Interpolator::Interpolator(){}
+    Interpolator::Interpolator(int nX, int nY) :
+      numberPixelsX(nX), numberPixelsY(nY) {}
 
     const std::array<int, 4> Interpolator::getPixelsCoordsAroundPoint(double
         coordX, double coordY) const{
