@@ -13,7 +13,14 @@ namespace Imagine {
       surroundingCoords = {int(coordX), int(coordX)+1,
                            int(coordY), int(coordY)+1};
       return surroundingCoords;
-
     }
+
+    int Interpolator::positionInLookupForPoint(double coordX, double coordY){
+      //TODO treat exception: coords out-of-bounds
+      return int(coordY) * numberPixelsX + int(coordX);
+    }
+
+
+
   }
 }

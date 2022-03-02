@@ -9,6 +9,8 @@ namespace Imagine {
         Interpolator(int, int);
 
         const std::array<int, 4> getPixelsCoordsAroundPoint(double, double) const;
+        int positionInLookupForPoint(double, double);
+
         int numberPixelsX;
         int numberPixelsY;
     };
