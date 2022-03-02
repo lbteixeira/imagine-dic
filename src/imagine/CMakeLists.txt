@@ -1,5 +1,4 @@
 set(CPP_FILES
-     hello.cpp
      main.cpp
    )
 
