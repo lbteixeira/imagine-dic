@@ -19,5 +19,9 @@ namespace Imagine {
       return _coefficients;
     }
 
+    CoefficientsTable::CoefficientsTable(unsigned int nX, unsigned int nY) :
+      _lookupTable(std::make_unique<std::vector<InterpBlockNode>>((nX-1)*(nY-1))){
+    }
+
   }
 }

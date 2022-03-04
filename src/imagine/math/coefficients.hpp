@@ -22,5 +22,12 @@ namespace Imagine {
 
     };
 
+    class CoefficientsTable {
+      public:
+        CoefficientsTable(unsigned int, unsigned int);
+
+      private:
+        std::unique_ptr<std::vector<InterpBlockNode>> _lookupTable;
+    };
   }
 }
