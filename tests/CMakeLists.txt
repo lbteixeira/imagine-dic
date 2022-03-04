@@ -9,7 +9,8 @@ set(INCLUDE_DIR
 add_executable(
   ${TESTS_PROJECT_NAME}
   main.cpp
-  test-1.cpp
+  test-interpolator.cpp
+  test-coeffTable.cpp
 )
 
 target_include_directories(${TESTS_PROJECT_NAME} PUBLIC ${INCLUDE_DIR})

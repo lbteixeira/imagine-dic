@@ -1,5 +1,6 @@
 set(CPP_FILES
      math/interpolation.cpp
+     math/coefficients.cpp
      main.cpp
    )
 
