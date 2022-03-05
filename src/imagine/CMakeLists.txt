@@ -5,7 +5,7 @@ set(CPP_FILES_LIB
 
 set(CPP_FILES_ALL
      ${CMAKE_CURRENT_SOURCE_DIR}
-     main.cpp
+     gui/main.cpp
    )
 
 SET(INCLUDE_DIR
