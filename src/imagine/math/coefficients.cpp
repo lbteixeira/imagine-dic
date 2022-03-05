@@ -46,5 +46,12 @@ namespace Imagine {
       return _lookupTable->at(position).getCoefficients();
     }
 
+    void
+    CoefficientsTable::setCoefficientsAtPoint(double x, double y,
+    const std::vector<double>& coeffs){
+      auto position = getPositionForPoint(x, y);
+      _lookupTable->at(position).setCoefficients(coeffs);
+    }
+
   }
 }

@@ -29,11 +29,20 @@ TEST_CASE("Table of coefficients", "[table]"){
 
   Math::CoefficientsTable lookupTable(5, 3);
   std::vector<double> ref;
+  std::vector<double> ref2 = {1.1, 2.2, 3.3};
   std::vector<double> coeffs = lookupTable.getCoefficientsAtPoint(2.213, 0.123);
 
   // The vector of coefficients at the node is empty by default
   REQUIRE(lookupTable.isEmptyAtPoint(2.213, 0.123));
   REQUIRE(coeffs == ref);
+
+  lookupTable.setCoefficientsAtPoint(2.214, 0.123, ref2);
+  coeffs = lookupTable.getCoefficientsAtPoint(2.213, 0.123);
+  REQUIRE(!lookupTable.isEmptyAtPoint(2.213, 0.123));
+  REQUIRE(coeffs == ref2);
+  REQUIRE(coeffs[0] == 1.1);
+  REQUIRE(coeffs[1] == 2.2);
+  REQUIRE(coeffs[2] == 3.3);
 
 }
 

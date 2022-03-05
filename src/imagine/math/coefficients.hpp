@@ -27,6 +27,7 @@ namespace Imagine {
         CoefficientsTable(unsigned int, unsigned int);
         bool isEmptyAtPoint(double, double) const;
         const std::vector<double>& getCoefficientsAtPoint(double, double) const;
+        void setCoefficientsAtPoint(double, double, const std::vector<double>&);
 
       private:
         unsigned int _sizeX, _sizeY;
