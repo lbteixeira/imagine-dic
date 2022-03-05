@@ -11,7 +11,7 @@ release:
 		cmake --build ./build/release
 
 .PHONY: run-debug
-run-debug: debug
+run-debug:
 		./build/debug/src/imagine/imagine
 
 .PHONY: run-release
