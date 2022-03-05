@@ -44,5 +44,15 @@ TEST_CASE("Table of coefficients", "[table]"){
   REQUIRE(coeffs[1] == 2.2);
   REQUIRE(coeffs[2] == 3.3);
 
+  // Look-up table is not empty for any points in the range x = [2, 3[ and
+  // y = [0, 1[, but continues to be empty elsewhere
+  REQUIRE(!lookupTable.isEmptyAtPoint(2.0, 0.0));
+  REQUIRE(!lookupTable.isEmptyAtPoint(2.999, 0.0));
+  REQUIRE(!lookupTable.isEmptyAtPoint(2.0, 0.999));
+  REQUIRE(!lookupTable.isEmptyAtPoint(2.999, 0.999));
+  REQUIRE(!lookupTable.isEmptyAtPoint(2.001, 0.99));
+  REQUIRE(!lookupTable.isEmptyAtPoint(2.731, 0.0001));
+  REQUIRE(lookupTable.isEmptyAtPoint(3.731, 0.0001));
+
 }
 
