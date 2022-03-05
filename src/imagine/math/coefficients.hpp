@@ -25,9 +25,14 @@ namespace Imagine {
     class CoefficientsTable {
       public:
         CoefficientsTable(unsigned int, unsigned int);
+        bool isEmptyAtPoint(double, double) const;
+        const std::vector<double>& getCoefficientsAtPoint(double, double) const;
 
       private:
+        unsigned int _sizeX, _sizeY;
         std::unique_ptr<std::vector<InterpBlockNode>> _lookupTable;
+
+        unsigned int getPositionForPoint(double, double) const;
     };
   }
 }

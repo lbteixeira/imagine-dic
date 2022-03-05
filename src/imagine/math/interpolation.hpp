@@ -1,18 +1,23 @@
 #pragma once
 
+#include "coefficients.hpp"
 #include <array>
+#include <memory>
+#include <vector>
 
 namespace Imagine {
   namespace Math {
     class Interpolator {
       public:
-        Interpolator(int, int);
+        Interpolator(unsigned int, unsigned int);
 
         const std::array<int, 4> getPixelsCoordsAroundPoint(double, double) const;
-        int positionInLookupForPoint(double, double);
 
-        int numberPixelsX;
-        int numberPixelsY;
+      private:
+        unsigned int _numPixelsX, _numPixelsY;
+        std::unique_ptr<CoefficientsTable> _lookupTable;
     };
+
   }
 }
+

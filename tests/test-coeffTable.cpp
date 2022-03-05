@@ -27,7 +27,13 @@ TEST_CASE("Interpolation block node", "[blockNode]"){
 
 TEST_CASE("Table of coefficients", "[table]"){
 
-  Math::CoefficientsTable lookupTable(10, 10);
+  Math::CoefficientsTable lookupTable(5, 3);
+  std::vector<double> ref;
+  std::vector<double> coeffs = lookupTable.getCoefficientsAtPoint(2.213, 0.123);
+
+  // The vector of coefficients at the node is empty by default
+  REQUIRE(lookupTable.isEmptyAtPoint(2.213, 0.123));
+  REQUIRE(coeffs == ref);
 
 }
 

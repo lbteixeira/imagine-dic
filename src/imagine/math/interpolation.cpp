@@ -1,10 +1,14 @@
 #include "interpolation.hpp"
 #include <array>
+#include <memory>
 
 namespace Imagine {
   namespace Math {
-    Interpolator::Interpolator(int nX, int nY) :
-      numberPixelsX(nX), numberPixelsY(nY) {}
+    Interpolator::Interpolator(unsigned int nX, unsigned int nY) :
+      _numPixelsX(nX), _numPixelsY(nY),
+      _lookupTable(std::make_unique<CoefficientsTable>(nX, nY)){
+
+    }
 
     const std::array<int, 4> Interpolator::getPixelsCoordsAroundPoint(double
         coordX, double coordY) const{
@@ -14,13 +18,6 @@ namespace Imagine {
                            int(coordY), int(coordY)+1};
       return surroundingCoords;
     }
-
-    int Interpolator::positionInLookupForPoint(double coordX, double coordY){
-      //TODO treat exception: coords out-of-bounds
-      return int(coordY) * numberPixelsX + int(coordX);
-    }
-
-
 
   }
 }
