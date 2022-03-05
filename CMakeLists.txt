@@ -14,6 +14,11 @@ option(PROJECT_BUILD_TESTS "Build the unit tests" OFF)
 if(NOT PROJECT_BUILD_TESTS)
   add_subdirectory(src/${CMAKE_PROJECT_NAME})
   add_subdirectory(external/wxWidgets)
+
+  target_include_directories(
+    ${CMAKE_PROJECT_NAME}
+    PUBLIC external/wxWidgets/include
+  )
 endif()
 
 #Only build the tests if required
@@ -21,7 +26,3 @@ if(PROJECT_BUILD_TESTS)
   add_subdirectory(tests)
 endif()
 
-target_include_directories(
-  ${CMAKE_PROJECT_NAME}
-  PUBLIC external/wxWidgets/include
-)
