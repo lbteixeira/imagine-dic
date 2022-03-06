@@ -14,12 +14,12 @@ SET(INCLUDE_DIR
    )
 
 set(EXTRA_COMP_FLAGS
-     #-Werror
-     #-Wall
-     #-Wextra
-     #-pedantic-errors
-     #-Wconversion
-     #-Wsign-conversion
+     -Werror
+     -Wall
+     -Wextra
+     -pedantic-errors
+     -Wconversion
+     -Wsign-conversion
    )
 
 add_executable(

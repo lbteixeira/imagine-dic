@@ -17,7 +17,7 @@ if(NOT PROJECT_BUILD_TESTS)
 
   target_include_directories(
     ${CMAKE_PROJECT_NAME}
-    PUBLIC external/wxWidgets/include
+    SYSTEM PUBLIC external/wxWidgets/include
   )
 endif()
 
