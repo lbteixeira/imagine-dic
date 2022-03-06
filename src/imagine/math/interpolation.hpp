@@ -9,13 +9,12 @@ namespace Imagine {
     class Interpolator {
       public:
         Interpolator(unsigned int, unsigned int);
-        double interpolateAtPoint(double, double) const;
+        virtual double interpolateAtPoint(double, double) const = 0;
 
       private:
         unsigned int _numPixelsX, _numPixelsY;
         std::unique_ptr<CoefficientsTable> _lookupTable;
     };
-
   }
 }
 
