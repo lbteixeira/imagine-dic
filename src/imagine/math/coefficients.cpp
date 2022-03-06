@@ -24,12 +24,12 @@ namespace Imagine {
 
     // Builds a look-up table of interpolation blocks nodes with size
     // (nX-1)x(nY-1), and using the constructor without arguments as default
-    CoefficientsTable::CoefficientsTable(unsigned int nX, unsigned int nY) :
+    CoefficientsTable::CoefficientsTable(std::size_t nX, std::size_t nY) :
       _sizeX(nX-1), _sizeY(nY-1),
       _lookupTable(std::make_unique<std::vector<InterpBlockNode>>((nX-1)*(nY-1))){
     }
 
-    unsigned int
+    std::size_t
     CoefficientsTable::getPositionForPoint(double x, double y) const{
       return unsigned(int(y)) * _sizeX + unsigned(int(x));
     }
