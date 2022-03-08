@@ -12,6 +12,9 @@ namespace Imagine {
      *  composed of interpolation block nodes, that contain a flag to indicate
      *  if this block was already calculated and a vector with the
      *  corresponding coefficients.
+     *
+     *  An interpolation block is the 2D space surrounded by four pixels, where
+     *  the sub-pixel calculations take place.
      */
     class InterpBlockNode {
       public:
@@ -22,7 +25,8 @@ namespace Imagine {
         InterpBlockNode();
         /**
          * Constructor used to define a non-empty node.
-         * @param coefficients vector of coefficients used for the interpolation.
+         * @param coefficients Vector of coefficients used for the
+         * interpolation.
          */
         explicit InterpBlockNode(const std::vector<double>& coefficients);
 
@@ -36,7 +40,7 @@ namespace Imagine {
         const std::vector<double>& getCoefficients() const;
         /**
          * @brief Sets the vector of coefficients.
-         * @param coefficients a vector of interpolation coefficients.
+         * @param coefficients A vector of interpolation coefficients.
          */
         void setCoefficients(const std::vector<double>& coefficients);
 
@@ -45,11 +49,68 @@ namespace Imagine {
         std::vector<double> _coefficients;
     };
 
+    /**
+     * @brief A class to represent a table of interpolation coefficients.
+     *
+     * A table of interpolation coefficients is used to accelerate the
+     * computations and to avoid redundant calculations. Once the coefficients
+     * are calculated for a given interpolation block, they are stored in the
+     * table and retrieved in case they are needed for another calculation
+     * step.
+     */
     class CoefficientsTable {
       public:
+        /**
+         * @brief Constructor used to define a new table of interpolation
+         * coefficients.
+         *
+         * The table of coefficients is a one-dimensional vector with size
+         * equal to (\p nX - 1)*(\p nY - 1).
+         *
+         * @param nX Number of pixels in the region of interest (ROI) in
+         * direction x.
+         * @param nX Number of pixels in the region of interest (ROI) in
+         * direction y.
+         *
+         */
         CoefficientsTable(std::size_t nX, std::size_t nY);
+        /**
+         * @brief Returns true if the table is empty for a given subpixel
+         * coordinate.
+         *
+         * The table is said to be empty at a given position if the
+         * corresponding \p InterpBlockNode has an empty vector of
+         * interpolation coefficients.
+         *
+         * The required input parameters are not the direct position at the
+         * table, but the coordinates of the subpixel location.
+         *
+         * @param x Coordinate x of the subpixel location.
+         * @param y Coordinate y of the subpixel location.
+         */
         bool isEmptyAtPoint(double x, double y) const;
+        /**
+         * @brief Get the interpolation coefficients for a given subpixel
+         * location.
+         *
+         * The required input parameters are not the direct position at the
+         * table, but the coordinates of the subpixel location.
+         *
+         * @param x Coordinate x of the subpixel location.
+         * @param y Coordinate y of the subpixel location.
+         */
         const std::vector<double>& getCoefficientsAtPoint(double x, double y) const;
+        /**
+         * @brief Set the interpolation coefficients for a given subpixel
+         * location.
+         *
+         * The required input parameters are not the direct position at the
+         * table, but the coordinates of the subpixel location.
+         *
+         * @param x Coordinate x of the subpixel location.
+         * @param y Coordinate y of the subpixel location.
+         * @param coeffs A vector of interpolation coefficients.
+         */
         void setCoefficientsAtPoint(double x, double y, const std::vector<double>& coeffs);
 
       private:

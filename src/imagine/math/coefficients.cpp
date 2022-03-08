@@ -3,6 +3,7 @@
 
 namespace Imagine {
   namespace Math {
+    /* InterpBlockNode methods */
     InterpBlockNode::InterpBlockNode(){_isEmpty = true; }
 
     InterpBlockNode::InterpBlockNode(const std::vector<double>& coefficients) :
@@ -22,8 +23,8 @@ namespace Imagine {
       return _coefficients;
     }
 
-    // Builds a look-up table of interpolation blocks nodes with size
-    // (nX-1)x(nY-1), and using the constructor without arguments as default
+
+    /* CoefficientsTable methods */
     CoefficientsTable::CoefficientsTable(std::size_t nX, std::size_t nY) :
       _sizeX(nX-1), _sizeY(nY-1),
       _lookupTable(std::make_unique<std::vector<InterpBlockNode>>((nX-1)*(nY-1))){
