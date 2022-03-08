@@ -31,26 +31,26 @@ namespace Imagine {
     }
 
     std::size_t
-    CoefficientsTable::getPositionForPoint(double x, double y) const{
-      return unsigned(int(y)) * _sizeX + unsigned(int(x));
+    CoefficientsTable::getPositionForPoint(const Utils::Point& p) const{
+      return unsigned(int(p.coordY)) * _sizeX + unsigned(int(p.coordX));
     }
 
     bool
-    CoefficientsTable::isEmptyAtPoint(double x, double y) const {
-      auto position = getPositionForPoint(x, y);
+    CoefficientsTable::isEmptyAtPoint(const Utils::Point& p) const{
+      auto position = getPositionForPoint(p);
       return _lookupTable->at(position).isEmpty();
     }
 
     const std::vector<double>&
-    CoefficientsTable::getCoefficientsAtPoint(double x, double y) const {
-      auto position = getPositionForPoint(x, y);
+    CoefficientsTable::getCoefficientsAtPoint(const Utils::Point& p) const {
+      auto position = getPositionForPoint(p);
       return _lookupTable->at(position).getCoefficients();
     }
 
     void
-    CoefficientsTable::setCoefficientsAtPoint(double x, double y,
+    CoefficientsTable::setCoefficientsAtPoint(const Utils::Point& p,
     const std::vector<double>& coeffs){
-      auto position = getPositionForPoint(x, y);
+      auto position = getPositionForPoint(p);
       _lookupTable->at(position).setCoefficients(coeffs);
     }
 

@@ -8,11 +8,13 @@ namespace Imagine {
   namespace Math {
     class Interpolator {
       public:
-        Interpolator(unsigned int, unsigned int);
-        virtual double interpolateAtPoint(double, double) const = 0;
+        virtual double interpolateAtPoint(double x, double y) const = 0;
+
+      protected:
+        Interpolator(std::size_t nX, std::size_t nY);
 
       private:
-        unsigned int _numPixelsX, _numPixelsY;
+        std::size_t _numPixelsX, _numPixelsY;
         std::unique_ptr<CoefficientsTable> _lookupTable;
     };
   }

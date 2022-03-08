@@ -4,6 +4,7 @@ set(TESTS_PROJECT_NAME "${CMAKE_PROJECT_NAME}-tests")
 
 set(INCLUDE_DIR
      ../src/imagine/math
+     ../src/imagine/utils
    )
 
 add_executable(

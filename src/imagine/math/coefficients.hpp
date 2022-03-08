@@ -2,6 +2,8 @@
 
 #include <memory>
 #include <vector>
+#include "../utils/primitives.hpp"
+
 
 namespace Imagine {
   namespace Math {
@@ -82,42 +84,39 @@ namespace Imagine {
          * corresponding \p InterpBlockNode has an empty vector of
          * interpolation coefficients.
          *
-         * The required input parameters are not the direct position at the
-         * table, but the coordinates of the subpixel location.
+         * The required input parameter is not the direct position at the
+         * table, but the point with subpixel location.
          *
-         * @param x Coordinate x of the subpixel location.
-         * @param y Coordinate y of the subpixel location.
+         * @param p Point at subpixel location.
          */
-        bool isEmptyAtPoint(double x, double y) const;
+        bool isEmptyAtPoint(const Utils::Point& p) const;
         /**
          * @brief Get the interpolation coefficients for a given subpixel
          * location.
          *
-         * The required input parameters are not the direct position at the
-         * table, but the coordinates of the subpixel location.
+         * The required input parameter is not the direct position at the
+         * table, but the point with subpixel location.
          *
-         * @param x Coordinate x of the subpixel location.
-         * @param y Coordinate y of the subpixel location.
+         * @param p Point at subpixel location.
          */
-        const std::vector<double>& getCoefficientsAtPoint(double x, double y) const;
+        const std::vector<double>& getCoefficientsAtPoint(const Utils::Point& p) const;
         /**
          * @brief Set the interpolation coefficients for a given subpixel
          * location.
          *
-         * The required input parameters are not the direct position at the
-         * table, but the coordinates of the subpixel location.
+         * The required input parameter is not the direct position at the
+         * table, but the point with subpixel location.
          *
-         * @param x Coordinate x of the subpixel location.
-         * @param y Coordinate y of the subpixel location.
+         * @param p Point at subpixel location.
          * @param coeffs A vector of interpolation coefficients.
          */
-        void setCoefficientsAtPoint(double x, double y, const std::vector<double>& coeffs);
+        void setCoefficientsAtPoint(const Utils::Point& p, const std::vector<double>& coeffs);
 
       private:
         std::size_t _sizeX, _sizeY;
         std::unique_ptr<std::vector<InterpBlockNode>> _lookupTable;
 
-        std::size_t getPositionForPoint(double x, double y) const;
+        std::size_t getPositionForPoint(const Utils::Point& p) const;
     };
   }
 }
