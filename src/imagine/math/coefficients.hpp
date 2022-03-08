@@ -9,12 +9,11 @@ namespace Imagine {
     class InterpBlockNode {
       public:
         InterpBlockNode();
-        explicit InterpBlockNode(const std::vector<double>&);
-        InterpBlockNode(const std::vector<double>&, bool);
+        explicit InterpBlockNode(const std::vector<double>& coefficients);
 
         bool isEmpty() const;
         const std::vector<double>& getCoefficients() const;
-        void setCoefficients(const std::vector<double>&);
+        void setCoefficients(const std::vector<double>& coefficients);
 
       private:
         bool _isEmpty;
@@ -23,16 +22,16 @@ namespace Imagine {
 
     class CoefficientsTable {
       public:
-        CoefficientsTable(std::size_t, std::size_t);
-        bool isEmptyAtPoint(double, double) const;
-        const std::vector<double>& getCoefficientsAtPoint(double, double) const;
-        void setCoefficientsAtPoint(double, double, const std::vector<double>&);
+        CoefficientsTable(std::size_t nX, std::size_t nY);
+        bool isEmptyAtPoint(double x, double y) const;
+        const std::vector<double>& getCoefficientsAtPoint(double x, double y) const;
+        void setCoefficientsAtPoint(double x, double y, const std::vector<double>& coeffs);
 
       private:
         std::size_t _sizeX, _sizeY;
         std::unique_ptr<std::vector<InterpBlockNode>> _lookupTable;
 
-        std::size_t getPositionForPoint(double, double) const;
+        std::size_t getPositionForPoint(double x, double y) const;
     };
   }
 }

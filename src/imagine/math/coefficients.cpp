@@ -12,8 +12,8 @@ namespace Imagine {
     InterpBlockNode::isEmpty() const { return _isEmpty; }
 
     void
-    InterpBlockNode::setCoefficients(const std::vector<double>& coeffs){
-      _coefficients = coeffs;
+    InterpBlockNode::setCoefficients(const std::vector<double>& coefficients){
+      _coefficients = coefficients;
       _isEmpty = false;
     }
 
