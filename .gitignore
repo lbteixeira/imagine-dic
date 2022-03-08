@@ -2,6 +2,7 @@
 compile_commands.json
 .vimspector.json
 build/
+doc/html/
 
 # Prerequisites
 *.d
