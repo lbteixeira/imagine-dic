@@ -8,5 +8,12 @@ namespace Imagine {
       T coordX;
       T coordY;
     };
+
+    template<typename T>
+    struct Pixel{
+      Pixel(Point<int> p, T intensity) : point(p), intensity(intensity){}
+      Point<int> point;
+      T intensity;
+    };
   }
 }

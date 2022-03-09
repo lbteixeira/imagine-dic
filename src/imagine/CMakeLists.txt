@@ -1,6 +1,6 @@
 set(CPP_FILES_LIB
-     math/interpolation.cpp
-     math/coefficients.cpp
+     core/interpolation.cpp
+     core/coefficients.cpp
    )
 
 set(CPP_FILES_ALL
@@ -9,9 +9,10 @@ set(CPP_FILES_ALL
    )
 
 SET(INCLUDE_DIR
-    ${CMAKE_CURRENT_SOURCE_DIR}/math
+    ${CMAKE_CURRENT_SOURCE_DIR}/core
     ${CMAKE_CURRENT_SOURCE_DIR}/gui
     ${CMAKE_CURRENT_SOURCE_DIR}/utils
+    ${CMAKE_CURRENT_SOURCE_DIR}/primitives
    )
 
 set(EXTRA_COMP_FLAGS

@@ -6,7 +6,7 @@
 
 
 namespace Imagine {
-  namespace Math {
+  namespace Core {
     /**
      *  @brief A class to represent interpolation block nodes.
      *

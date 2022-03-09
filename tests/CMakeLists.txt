@@ -3,7 +3,8 @@
 set(TESTS_PROJECT_NAME "${CMAKE_PROJECT_NAME}-tests")
 
 set(INCLUDE_DIR
-     ../src/imagine/math
+     ../src/imagine/core
+     ../src/imagine/primitives
      ../src/imagine/utils
    )
 

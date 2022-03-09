@@ -2,7 +2,7 @@
 #include <vector>
 
 namespace Imagine {
-  namespace Math {
+  namespace Core {
     /* InterpBlockNode methods */
     InterpBlockNode::InterpBlockNode(){_isEmpty = true; }
 

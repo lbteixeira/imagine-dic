@@ -9,8 +9,8 @@ TEST_CASE("Interpolation block node", "[blockNode]"){
 
   std::vector<double> coefficients = {1.0, 2.0, 3.0, 4.0, 5.0};
 
-  Math::InterpBlockNode node1;
-  Math::InterpBlockNode node2(coefficients);
+  Core::InterpBlockNode node1;
+  Core::InterpBlockNode node2(coefficients);
 
   REQUIRE(node1.isEmpty());
   REQUIRE(!node2.isEmpty());
@@ -28,7 +28,7 @@ TEST_CASE("Interpolation block node", "[blockNode]"){
 
 TEST_CASE("Table of coefficients", "[table]"){
 
-  Math::CoefficientsTable lookupTable(5, 3);
+  Core::CoefficientsTable lookupTable(5, 3);
   std::vector<double> ref;
   std::vector<double> ref2 = {1.1, 2.2, 3.3};
   Utils::Point p(2.213, 0.123);
