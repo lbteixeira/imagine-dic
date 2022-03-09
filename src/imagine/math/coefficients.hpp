@@ -35,16 +35,19 @@ namespace Imagine {
         /**
          * @brief Returns true if the vector of coefficients is empty.
          */
-        bool isEmpty() const;
+        bool
+        isEmpty() const;
         /**
          * @brief Returns the vector of coefficients.
          */
-        const std::vector<double>& getCoefficients() const;
+        const
+        std::vector<double>& getCoefficients() const;
         /**
          * @brief Sets the vector of coefficients.
          * @param coefficients A vector of interpolation coefficients.
          */
-        void setCoefficients(const std::vector<double>& coefficients);
+        void
+        setCoefficients(const std::vector<double>& coefficients);
 
       private:
         bool _isEmpty;
@@ -89,7 +92,8 @@ namespace Imagine {
          *
          * @param p Point at subpixel location.
          */
-        bool isEmptyAtPoint(const Utils::Point& p) const;
+        bool
+        isEmptyAtPoint(const Utils::Point<double>& p) const;
         /**
          * @brief Get the interpolation coefficients for a given subpixel
          * location.
@@ -99,7 +103,8 @@ namespace Imagine {
          *
          * @param p Point at subpixel location.
          */
-        const std::vector<double>& getCoefficientsAtPoint(const Utils::Point& p) const;
+        const std::vector<double>&
+        getCoefficientsAtPoint(const Utils::Point<double>& p) const;
         /**
          * @brief Set the interpolation coefficients for a given subpixel
          * location.
@@ -110,13 +115,16 @@ namespace Imagine {
          * @param p Point at subpixel location.
          * @param coeffs A vector of interpolation coefficients.
          */
-        void setCoefficientsAtPoint(const Utils::Point& p, const std::vector<double>& coeffs);
+        void
+        setCoefficientsAtPoint(const Utils::Point<double>& p,
+            const std::vector<double>& coeffs);
 
       private:
         std::size_t _sizeX, _sizeY;
         std::unique_ptr<std::vector<InterpBlockNode>> _lookupTable;
 
-        std::size_t getPositionForPoint(const Utils::Point& p) const;
+        std::size_t
+        getPositionForPoint(const Utils::Point<double>& p) const;
     };
   }
 }

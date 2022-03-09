@@ -2,10 +2,11 @@
 
 namespace Imagine {
   namespace Utils {
+    template<typename T>
     struct Point{
-      Point(double x, double y) : coordX(x), coordY(y){}
-      double coordX;
-      double coordY;
+      Point(T x, T y) : coordX(x), coordY(y){}
+      T coordX;
+      T coordY;
     };
   }
 }
