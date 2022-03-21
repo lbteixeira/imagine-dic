@@ -6,6 +6,7 @@ set(INCLUDE_DIR
      ../src/imagine/core
      ../src/imagine/primitives
      ../src/imagine/utils
+     ../src/imagine/mesh
    )
 
 add_executable(
@@ -13,6 +14,7 @@ add_executable(
   main.cpp
   test-interpolator.cpp
   test-coeffTable.cpp
+  test-mesh.cpp
 )
 
 target_include_directories(${TESTS_PROJECT_NAME} PUBLIC ${INCLUDE_DIR})

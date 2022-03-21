@@ -1,4 +1,3 @@
-#include <array>
 #include <catch2/catch.hpp>
 #include "interpolation.hpp"
 
