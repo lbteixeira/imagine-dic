@@ -10,20 +10,19 @@
 
 ## About The Project
 
-Describe the project here.
+WORK IN PROGRESS!!!
 
 ### Prerequisites / Dependencies
 
-List here the libraries/frameworks used to build the project. Refer to the
-installation pages.
+For wxwidgets:
+libcurl4-gnutls-dev
+libtiff-dev
+libjpeg-dev
+libgtk-3-dev
 
 ### Installation
 
-Describe how to compile/install the project.
-
 ### Usage
-
-Describe how to use the software.
 
 ### Documentation
 
@@ -33,8 +32,6 @@ Requires pdf2svg or inkscape to generate equations. Othewise, change
 HTML_FORMULA_FORMAT to png
 
 ### Contributing
-
-Information for possible future contributors.
 
 ## License
 
