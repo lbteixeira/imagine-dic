@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.21.3)
+cmake_minimum_required(VERSION 3.16.3)
 
 # Project's name
 project(imagine VERSION 0.0.1)
