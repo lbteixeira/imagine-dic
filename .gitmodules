@@ -1,3 +1,4 @@
 [submodule "external/wxWidgets"]
 	path = external/wxWidgets
 	url = https://github.com/wxWidgets/wxWidgets.git
+	ignore = dirty
