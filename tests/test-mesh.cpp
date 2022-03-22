@@ -4,7 +4,7 @@
 
 using namespace Imagine;
 
-TEST_CASE("Mesh", "[mesh]"){
-  std::unique_ptr<Mesh::Mesh>
-  mesh = std::make_unique<Mesh::RectangularMesh>();
-}
+//TEST_CASE("Mesh", "[mesh]"){
+  //std::unique_ptr<Mesh::Mesh>
+  //mesh = std::make_unique<Mesh::RectangularMesh>();
+//}

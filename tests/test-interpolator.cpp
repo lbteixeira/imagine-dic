@@ -4,6 +4,6 @@
 using namespace Imagine;
 
 TEST_CASE("Interpolation", "[math]"){
-  //Math::Interpolator interp(5, 5);
+  //Interpolator interp(5, 5);
 }
 

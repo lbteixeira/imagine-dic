@@ -5,14 +5,12 @@
 #include <memory>
 
 namespace Imagine {
-  namespace Core {
-    class Image {
-      public:
-        Image();
+  class Image {
+    public:
+      Image();
 
-      private:
-        std::unique_ptr<Mesh::Mesh> _mesh;
-        std::unique_ptr<Interpolator> _interpolator;
-    };
-  }
+    private:
+      std::unique_ptr<Mesh> _mesh;
+      std::unique_ptr<Interpolator> _interpolator;
+  };
 }
