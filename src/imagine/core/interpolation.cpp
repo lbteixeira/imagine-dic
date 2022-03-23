@@ -2,8 +2,14 @@
 #include <memory>
 
 namespace Imagine {
-  Interpolator::Interpolator(std::size_t nX, std::size_t nY) :
-    _numPixelsX(nX), _numPixelsY(nY),
-    _lookupTable(std::make_unique<CoefficientsTable>(nX, nY)){
+  Interpolator::Interpolator(){}
+  Interpolator::~Interpolator(){}
+
+  BilinearInterpolator::BilinearInterpolator(){}
+  BilinearInterpolator::~BilinearInterpolator(){}
+
+  double
+  BilinearInterpolator::interpolate(Point<double> p) const{
+    return p.coordX;
   }
 }
