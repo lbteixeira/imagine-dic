@@ -2,10 +2,14 @@
 #include <memory>
 
 namespace Imagine {
-  Interpolator::Interpolator(){}
+  Interpolator::Interpolator(std::size_t nX, std::size_t nY) :
+      _lookupTable(std::make_unique<CoefficientsTable>(nX, nY)){}
+
   Interpolator::~Interpolator(){}
 
-  BilinearInterpolator::BilinearInterpolator(){}
+  BilinearInterpolator::BilinearInterpolator(std::size_t nX, std::size_t nY) :
+      Interpolator(nX, nY){}
+
   BilinearInterpolator::~BilinearInterpolator(){}
 
   double

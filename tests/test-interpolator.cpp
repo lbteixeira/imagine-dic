@@ -5,6 +5,6 @@
 using namespace Imagine;
 
 TEST_CASE("Interpolation"){
-  std::unique_ptr<Interpolator> interpolator = std::make_unique<BilinearInterpolator>();
+  std::unique_ptr<Interpolator> interpolator = std::make_unique<BilinearInterpolator>(10, 10);
 }
 

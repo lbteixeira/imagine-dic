@@ -21,7 +21,7 @@ namespace Imagine {
       interpolate(Point<double> p) const = 0;
 
     protected:
-      Interpolator();
+      Interpolator(std::size_t nX, std::size_t nY);
 
     private:
       std::unique_ptr<CoefficientsTable> _lookupTable;
@@ -29,7 +29,7 @@ namespace Imagine {
 
   class BilinearInterpolator : public Interpolator {
     public:
-      BilinearInterpolator();
+      BilinearInterpolator(std::size_t nX, std::size_t nY);
       virtual ~BilinearInterpolator();
 
       virtual double
