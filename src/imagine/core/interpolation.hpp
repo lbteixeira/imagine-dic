@@ -3,6 +3,7 @@
 #include "coefficients.hpp"
 //#include "image.hpp"
 #include <memory>
+#include <tuple>
 #include <vector>
 
 namespace Imagine {
@@ -18,7 +19,8 @@ namespace Imagine {
        * @param p Point where to interpolate.
        */
       virtual double
-      interpolate(Point<double> p) const = 0;
+      interpolate(Point<double> p,
+                  std::vector<std::tuple<int, int, int>> neighborPx) const = 0;
 
     protected:
       Interpolator(std::size_t nX, std::size_t nY);
@@ -33,7 +35,8 @@ namespace Imagine {
       virtual ~BilinearInterpolator();
 
       virtual double
-      interpolate(Point<double> p) const override;
+      interpolate(Point<double> p,
+                  std::vector<std::tuple<int, int, int>> neighborPx) const override;
   };
 }
 
