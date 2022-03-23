@@ -19,6 +19,7 @@ libcurl4-gnutls-dev
 libtiff-dev
 libjpeg-dev
 libgtk-3-dev
+ImageMagick - include /usr/local/include/ImageMagick-7 to the path
 
 ### Installation
 
