@@ -11,6 +11,7 @@ namespace Imagine {
    */
   class Interpolator {
     public:
+      virtual ~Interpolator();
       /**
        * @brief Interpolates the pixel's intensity value at a given point.
        *
@@ -18,8 +19,6 @@ namespace Imagine {
        */
       virtual double
       interpolate(Point<double> p) const = 0;
-
-      virtual ~Interpolator();
 
     protected:
       Interpolator();
@@ -34,7 +33,7 @@ namespace Imagine {
       virtual ~BilinearInterpolator();
 
       virtual double
-      interpolate(Point<double> p) const;
+      interpolate(Point<double> p) const override;
   };
 }
 
