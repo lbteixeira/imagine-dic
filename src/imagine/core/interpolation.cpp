@@ -5,19 +5,27 @@
 typedef std::vector<std::tuple<int, int, int>> vector_px;
 
 namespace Imagine {
+  /* Interpolator methods */
   Interpolator::Interpolator(std::size_t nX, std::size_t nY) :
       _lookupTable(std::make_unique<CoefficientsTable>(nX, nY)){}
 
   Interpolator::~Interpolator(){}
 
+  double
+  Interpolator::interpolate(const Point<double>& p,
+                            const vector_px& neighborPx) const{
+    return _interpolate(p, neighborPx);
+  }
+
+  /* BilinearInterpolator methods */
   BilinearInterpolator::BilinearInterpolator(std::size_t nX, std::size_t nY) :
       Interpolator(nX, nY){}
 
   BilinearInterpolator::~BilinearInterpolator(){}
 
   double
-  BilinearInterpolator::interpolate(const Point<double>& p,
-      const std::vector<std::tuple<int, int, int>>& neighborPx) const{
+  BilinearInterpolator::_interpolate(const Point<double>& p,
+                                     const vector_px& neighborPx) const{
 
     double w1, w2, w3, w4;
     double p1, p2, p3, p4;

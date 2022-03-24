@@ -21,12 +21,15 @@ namespace Imagine {
        * @param neighborPx Vector of neighboring pixels, including x & y
        *                   coordinates and the intensity value.
        */
-      virtual double
-      interpolate(const Point<double>& p,
-                  const std::vector<std::tuple<int, int, int>>& neighborPx) const = 0;
+      double
+      interpolate(const Point<double>& p, const vector_px& neighborPx) const;
 
     protected:
       Interpolator(std::size_t nX, std::size_t nY);
+
+      virtual double
+      _interpolate(const Point<double>& p,
+                   const vector_px& neighborPx) const = 0;
 
     private:
       std::unique_ptr<CoefficientsTable> _lookupTable;
@@ -37,9 +40,10 @@ namespace Imagine {
       BilinearInterpolator(std::size_t nX, std::size_t nY);
       virtual ~BilinearInterpolator();
 
+    protected:
       virtual double
-      interpolate(const Point<double>& p,
-                  const std::vector<std::tuple<int, int, int>>& neighborPx) const override;
+      _interpolate(const Point<double>& p,
+                   const vector_px& neighborPx) const override;
   };
 }
 
