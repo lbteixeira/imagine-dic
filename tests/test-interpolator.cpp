@@ -14,12 +14,8 @@ TEST_CASE("Interpolation"){
   SECTION("Point 1"){
     Point<double> p(14.5, 20.2);
 
-    std::vector<std::tuple<int, int, int>> neighborPx;
-    neighborPx.reserve(4);
-    neighborPx.emplace_back(std::make_tuple(14, 20, 91));
-    neighborPx.emplace_back(std::make_tuple(15, 20, 210));
-    neighborPx.emplace_back(std::make_tuple(15, 21, 95));
-    neighborPx.emplace_back(std::make_tuple(14, 21, 162));
+    std::vector<std::array<int,3>>
+    neighborPx = {{14, 20, 91}, {15, 20, 210}, {15, 21, 95 }, {14, 21, 162}};
 
     auto result = interpolator.interpolate(p, neighborPx);
     auto expected = 146.1;
@@ -30,11 +26,8 @@ TEST_CASE("Interpolation"){
   SECTION("Point 2"){
     Point<double> p(123.37, 157.81);
 
-    std::vector<std::tuple<int, int, int>> neighborPx;
-    neighborPx.push_back(std::make_tuple(123, 157, 97));
-    neighborPx.push_back(std::make_tuple(124, 157, 12));
-    neighborPx.push_back(std::make_tuple(124, 158, 213));
-    neighborPx.push_back(std::make_tuple(123, 158, 255));
+    std::vector<std::array<int,3>>
+    neighborPx = {{123, 157, 97}, {124, 157, 12}, {124, 158, 213}, {123, 158, 255}};
 
     auto result = interpolator.interpolate(p, neighborPx);
     auto expected = 206.42;

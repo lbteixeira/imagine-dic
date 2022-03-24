@@ -2,10 +2,9 @@
 
 #include "coefficients.hpp"
 #include <memory>
-#include <tuple>
 #include <vector>
 
-typedef std::vector<std::tuple<int, int, int>> vector_px;
+typedef std::vector<std::array<int, 3>> vector_px;
 
 namespace Imagine {
   /**

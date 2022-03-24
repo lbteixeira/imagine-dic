@@ -22,7 +22,6 @@ namespace Imagine {
     return _coefficients;
   }
 
-
   /* CoefficientsTable methods */
   CoefficientsTable::CoefficientsTable(std::size_t nX, std::size_t nY) :
     _sizeX(nX-1), _sizeY(nY-1),

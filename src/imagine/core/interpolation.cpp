@@ -3,7 +3,7 @@
 #include <tuple>
 #include <vector>
 
-typedef std::vector<std::tuple<int, int, int>> vector_px;
+typedef std::vector<std::array<int, 3>> vector_px;
 
 namespace Imagine {
   /* Interpolator methods */
@@ -23,11 +23,9 @@ namespace Imagine {
       coeffs = _calculateCoefficients(p, neighborPx);
     }
 
-    int x, y, z;
     double interpolated = 0;
     for (std::size_t i = 0; i < coeffs.size(); i++) {
-      std::tie(x, y, z) = neighborPx[i];
-      interpolated += coeffs[i]*z;
+      interpolated += coeffs[i]*neighborPx[i][2];
     }
 
     return interpolated;
@@ -44,15 +42,15 @@ namespace Imagine {
       const vector_px& neighborPx) const{
 
     double w1, w2, w3, w4;
-    double p1, p2, p3, p4;
     double x, x1, x2, y, y1, y2;
 
     x = p.coordX;
     y = p.coordY;
-    std::tie(x1, y1, p1) = neighborPx[0];
-    std::tie(x2, y1, p2) = neighborPx[1];
-    std::tie(x2, y2, p3) = neighborPx[2];
-    std::tie(x1, y2, p4) = neighborPx[3];
+
+    x1 = neighborPx[0][0];
+    x2 = neighborPx[1][0];
+    y1 = neighborPx[0][1];
+    y2 = neighborPx[2][1];
 
     w1 = (x2 - x)*(y2 - y);
     w2 = (x - x1)*(y2 - y);
