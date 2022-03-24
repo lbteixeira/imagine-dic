@@ -6,6 +6,8 @@
 #include <tuple>
 #include <vector>
 
+typedef std::vector<std::tuple<int, int, int>> vector_tuple;
+
 namespace Imagine {
   /**
    *  @brief Interface to the interpolation algorithms.
