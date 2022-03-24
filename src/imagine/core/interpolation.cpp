@@ -34,6 +34,5 @@ namespace Imagine {
     w4 = (x2 - x)*(y - y1);
 
     return p1*w1 + p2*w2 + p3*w3 + p4*w4;
-
   }
 }

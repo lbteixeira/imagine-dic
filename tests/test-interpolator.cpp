@@ -15,10 +15,11 @@ TEST_CASE("Interpolation"){
     Point<double> p(14.5, 20.2);
 
     std::vector<std::tuple<int, int, int>> neighborPx;
-    neighborPx.push_back(std::make_tuple(14, 20, 91));
-    neighborPx.push_back(std::make_tuple(15, 20, 210));
-    neighborPx.push_back(std::make_tuple(15, 21, 95));
-    neighborPx.push_back(std::make_tuple(14, 21, 162));
+    neighborPx.reserve(4);
+    neighborPx.emplace_back(std::make_tuple(14, 20, 91));
+    neighborPx.emplace_back(std::make_tuple(15, 20, 210));
+    neighborPx.emplace_back(std::make_tuple(15, 21, 95));
+    neighborPx.emplace_back(std::make_tuple(14, 21, 162));
 
     auto result = interpolator->interpolate(p, neighborPx);
     auto expected = 146.1;

@@ -17,6 +17,8 @@ namespace Imagine {
        * @brief Interpolates the pixel's intensity value at a given point.
        *
        * @param p Point where to interpolate.
+       * @param neighborPx Vector of neighboring pixels, including x & y
+       *                   coordinates and the intensity value.
        */
       virtual double
       interpolate(Point<double> p,
