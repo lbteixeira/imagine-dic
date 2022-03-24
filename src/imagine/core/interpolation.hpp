@@ -27,12 +27,12 @@ namespace Imagine {
     protected:
       Interpolator(std::size_t nX, std::size_t nY);
 
-      virtual double
-      _interpolate(const Point<double>& p,
-                   const vector_px& neighborPx) const = 0;
+      virtual const std::vector<double>
+      _calculateCoefficients(const Point<double>& p,
+          const vector_px& neighborPx) const = 0;
 
     private:
-      std::unique_ptr<CoefficientsTable> _lookupTable;
+      CoefficientsTable _lookupTable;
   };
 
   class BilinearInterpolator : public Interpolator {
@@ -41,9 +41,9 @@ namespace Imagine {
       virtual ~BilinearInterpolator();
 
     protected:
-      virtual double
-      _interpolate(const Point<double>& p,
-                   const vector_px& neighborPx) const override;
+      virtual const std::vector<double>
+      _calculateCoefficients(const Point<double>& p,
+          const vector_px& neighborPx) const override;
   };
 }
 

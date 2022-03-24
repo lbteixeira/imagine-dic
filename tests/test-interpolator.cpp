@@ -9,7 +9,7 @@ TEST_CASE("Interpolation"){
 
   auto abs_tolerance = 0.01;
 
-  std::unique_ptr<Interpolator> interpolator = std::make_unique<BilinearInterpolator>(10, 10);
+  BilinearInterpolator interpolator(500, 500);
 
   SECTION("Point 1"){
     Point<double> p(14.5, 20.2);
@@ -21,7 +21,7 @@ TEST_CASE("Interpolation"){
     neighborPx.emplace_back(std::make_tuple(15, 21, 95));
     neighborPx.emplace_back(std::make_tuple(14, 21, 162));
 
-    auto result = interpolator->interpolate(p, neighborPx);
+    auto result = interpolator.interpolate(p, neighborPx);
     auto expected = 146.1;
 
     REQUIRE(std::abs(result - expected) < abs_tolerance);
@@ -36,7 +36,7 @@ TEST_CASE("Interpolation"){
     neighborPx.push_back(std::make_tuple(124, 158, 213));
     neighborPx.push_back(std::make_tuple(123, 158, 255));
 
-    auto result = interpolator->interpolate(p, neighborPx);
+    auto result = interpolator.interpolate(p, neighborPx);
     auto expected = 206.42;
 
     REQUIRE(std::abs(result - expected) < abs_tolerance);

@@ -1,20 +1,36 @@
 #include "interpolation.hpp"
 #include <memory>
 #include <tuple>
+#include <vector>
 
 typedef std::vector<std::tuple<int, int, int>> vector_px;
 
 namespace Imagine {
   /* Interpolator methods */
   Interpolator::Interpolator(std::size_t nX, std::size_t nY) :
-      _lookupTable(std::make_unique<CoefficientsTable>(nX, nY)){}
+      _lookupTable(nX, nY){}
 
   Interpolator::~Interpolator(){}
 
   double
   Interpolator::interpolate(const Point<double>& p,
-                            const vector_px& neighborPx) const{
-    return _interpolate(p, neighborPx);
+      const vector_px& neighborPx) const{
+
+    std::vector<double> coeffs;
+    if (!_lookupTable.isEmptyAtPoint(p)) {
+      coeffs = _lookupTable.getCoefficientsAtPoint(p); }
+    else {
+      coeffs = _calculateCoefficients(p, neighborPx);
+    }
+
+    int x, y, z;
+    double interpolated = 0;
+    for (std::size_t i = 0; i < coeffs.size(); i++) {
+      std::tie(x, y, z) = neighborPx[i];
+      interpolated += coeffs[i]*z;
+    }
+
+    return interpolated;
   }
 
   /* BilinearInterpolator methods */
@@ -23,9 +39,9 @@ namespace Imagine {
 
   BilinearInterpolator::~BilinearInterpolator(){}
 
-  double
-  BilinearInterpolator::_interpolate(const Point<double>& p,
-                                     const vector_px& neighborPx) const{
+  const std::vector<double>
+  BilinearInterpolator::_calculateCoefficients(const Point<double>& p,
+      const vector_px& neighborPx) const{
 
     double w1, w2, w3, w4;
     double p1, p2, p3, p4;
@@ -43,6 +59,8 @@ namespace Imagine {
     w3 = (x - x1)*(y - y1);
     w4 = (x2 - x)*(y - y1);
 
-    return p1*w1 + p2*w2 + p3*w3 + p4*w4;
+    std::vector<double> result = {w1, w2, w3, w4};
+
+    return result;
   }
 }
