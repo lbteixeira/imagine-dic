@@ -2,6 +2,8 @@
 #include <memory>
 #include <tuple>
 
+typedef std::vector<std::tuple<int, int, int>> vector_px;
+
 namespace Imagine {
   Interpolator::Interpolator(std::size_t nX, std::size_t nY) :
       _lookupTable(std::make_unique<CoefficientsTable>(nX, nY)){}

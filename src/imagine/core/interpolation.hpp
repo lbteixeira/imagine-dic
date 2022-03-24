@@ -5,7 +5,7 @@
 #include <tuple>
 #include <vector>
 
-typedef std::vector<std::tuple<int, int, int>> vector_tuple;
+typedef std::vector<std::tuple<int, int, int>> vector_px;
 
 namespace Imagine {
   /**
