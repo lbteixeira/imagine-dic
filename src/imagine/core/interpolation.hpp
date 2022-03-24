@@ -1,7 +1,6 @@
 #pragma once
 
 #include "coefficients.hpp"
-//#include "image.hpp"
 #include <memory>
 #include <tuple>
 #include <vector>
