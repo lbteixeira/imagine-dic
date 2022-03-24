@@ -14,8 +14,8 @@ namespace Imagine {
   BilinearInterpolator::~BilinearInterpolator(){}
 
   double
-  BilinearInterpolator::interpolate(Point<double> p,
-      std::vector<std::tuple<int, int, int>> neighborPx) const{
+  BilinearInterpolator::interpolate(const Point<double>& p,
+      const std::vector<std::tuple<int, int, int>>& neighborPx) const{
 
     double w1, w2, w3, w4;
     double p1, p2, p3, p4;

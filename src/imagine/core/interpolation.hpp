@@ -21,8 +21,8 @@ namespace Imagine {
        *                   coordinates and the intensity value.
        */
       virtual double
-      interpolate(Point<double> p,
-                  std::vector<std::tuple<int, int, int>> neighborPx) const = 0;
+      interpolate(const Point<double>& p,
+                  const std::vector<std::tuple<int, int, int>>& neighborPx) const = 0;
 
     protected:
       Interpolator(std::size_t nX, std::size_t nY);
@@ -37,8 +37,8 @@ namespace Imagine {
       virtual ~BilinearInterpolator();
 
       virtual double
-      interpolate(Point<double> p,
-                  std::vector<std::tuple<int, int, int>> neighborPx) const override;
+      interpolate(const Point<double>& p,
+                  const std::vector<std::tuple<int, int, int>>& neighborPx) const override;
   };
 }
 
