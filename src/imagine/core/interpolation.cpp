@@ -37,7 +37,6 @@ namespace Imagine {
   const std::vector<double>
   BilinearInterpolator::_calculateCoefficients(const vector_px& neighborPx) {
 
-    double c1, c2, c3, c4;
     double f1, f2, f3, f4;
 
     f1 = neighborPx[0][2];
@@ -45,12 +44,7 @@ namespace Imagine {
     f3 = neighborPx[3][2];
     f4 = neighborPx[2][2];
 
-    c1 = f1;
-    c2 = f2-f1;
-    c3 = f3-f1;
-    c4 = f4-f2-f3+f1;
-
-    std::vector<double> result = {c1, c2, c3, c4};
+    std::vector<double> result = {f1, f2-f1, f3-f1, f4-f2-f3+f1};
 
     return result;
   }
