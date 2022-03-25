@@ -21,17 +21,19 @@ namespace Imagine {
        *                   coordinates and the intensity value.
        */
       double
-      interpolate(const Point<double>& p, const vector_px& neighborPx) const;
+      interpolate(const Point<double>& p, const vector_px& neighborPx);
 
     protected:
       Interpolator(std::size_t nX, std::size_t nY);
 
-      virtual const std::vector<double>
-      _calculateCoefficients(const Point<double>& p,
-          const vector_px& neighborPx) const = 0;
-
-    private:
       CoefficientsTable _lookupTable;
+
+      virtual const std::vector<double>
+      _calculateCoefficients(const vector_px& neighborPx) = 0;
+
+      virtual double
+      _interpolate(const Point<double>& p,
+          const std::vector<double>& coefficients) const = 0;
   };
 
   class BilinearInterpolator : public Interpolator {
@@ -41,8 +43,11 @@ namespace Imagine {
 
     protected:
       virtual const std::vector<double>
-      _calculateCoefficients(const Point<double>& p,
-          const vector_px& neighborPx) const override;
+      _calculateCoefficients(const vector_px& neighborPx) override;
+
+      virtual double
+      _interpolate(const Point<double>& p,
+          const std::vector<double>& neighborPx) const override;
   };
 }
 

@@ -1,4 +1,5 @@
 #include "interpolation.hpp"
+#include <cmath>
 #include <memory>
 #include <tuple>
 #include <vector>
@@ -14,21 +15,17 @@ namespace Imagine {
 
   double
   Interpolator::interpolate(const Point<double>& p,
-      const vector_px& neighborPx) const{
+      const vector_px& neighborPx) {
 
     std::vector<double> coeffs;
     if (!_lookupTable.isEmptyAtPoint(p)) {
       coeffs = _lookupTable.getCoefficientsAtPoint(p); }
     else {
-      coeffs = _calculateCoefficients(p, neighborPx);
+      coeffs = _calculateCoefficients(neighborPx);
+      _lookupTable.setCoefficientsAtPoint(p, coeffs);
     }
 
-    double interpolated = 0;
-    for (std::size_t i = 0; i < coeffs.size(); i++) {
-      interpolated += coeffs[i]*neighborPx[i][2];
-    }
-
-    return interpolated;
+    return _interpolate(p, coeffs);
   }
 
   /* BilinearInterpolator methods */
@@ -38,27 +35,34 @@ namespace Imagine {
   BilinearInterpolator::~BilinearInterpolator(){}
 
   const std::vector<double>
-  BilinearInterpolator::_calculateCoefficients(const Point<double>& p,
-      const vector_px& neighborPx) const{
+  BilinearInterpolator::_calculateCoefficients(const vector_px& neighborPx) {
 
-    double w1, w2, w3, w4;
-    double x, x1, x2, y, y1, y2;
+    double c1, c2, c3, c4;
+    double f1, f2, f3, f4;
 
-    x = p.coordX;
-    y = p.coordY;
+    f1 = neighborPx[0][2];
+    f2 = neighborPx[1][2];
+    f3 = neighborPx[3][2];
+    f4 = neighborPx[2][2];
 
-    x1 = neighborPx[0][0];
-    x2 = neighborPx[1][0];
-    y1 = neighborPx[0][1];
-    y2 = neighborPx[2][1];
+    c1 = f1;
+    c2 = f2-f1;
+    c3 = f3-f1;
+    c4 = f4-f2-f3+f1;
 
-    w1 = (x2 - x)*(y2 - y);
-    w2 = (x - x1)*(y2 - y);
-    w3 = (x - x1)*(y - y1);
-    w4 = (x2 - x)*(y - y1);
-
-    std::vector<double> result = {w1, w2, w3, w4};
+    std::vector<double> result = {c1, c2, c3, c4};
 
     return result;
+  }
+
+  double
+  BilinearInterpolator::_interpolate(const Point<double>& p,
+      const std::vector<double>& coefficients) const {
+
+    double x = p.coordX - std::floor(p.coordX);
+    double y = p.coordY - std::floor(p.coordY);
+
+    return coefficients[0] + coefficients[1] * x +
+           coefficients[2] * y + coefficients[3] * x * y;
   }
 }
