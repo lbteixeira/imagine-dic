@@ -36,6 +36,9 @@ namespace Imagine {
           const std::vector<double>& coefficients) const = 0;
   };
 
+  /**
+   *  @brief Bilinear interpolation class.
+   */
   class BilinearInterpolator : public Interpolator {
     public:
       BilinearInterpolator(std::size_t nX, std::size_t nY);

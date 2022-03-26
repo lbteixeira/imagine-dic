@@ -20,6 +20,7 @@ libtiff-dev
 libjpeg-dev
 libgtk-3-dev
 ImageMagick - include /usr/local/include/ImageMagick-7 to the path
+OpenBlas and Lapack: including dev versions of libraries. libopenblas-base and libopenblas-dev
 
 ### Installation
 
