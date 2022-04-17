@@ -1,6 +1,7 @@
 #pragma once
 
 #include "coefficients.hpp"
+#include "derivatives.hpp"
 #include <memory>
 #include <vector>
 
@@ -43,6 +44,23 @@ namespace Imagine {
     public:
       BilinearInterpolator(std::size_t nX, std::size_t nY);
       virtual ~BilinearInterpolator();
+
+    protected:
+      virtual const std::vector<double>
+      _calculateCoefficients(const vector_px& neighborPx) override;
+
+      virtual double
+      _interpolate(const Point<double>& p,
+          const std::vector<double>& neighborPx) const override;
+  };
+
+  /**
+   * @brief Bicubic interpolation class.
+   */
+  class BicubicInterpolator : public Interpolator {
+    public:
+      BicubicInterpolator(std::size_t nX, std::size_t nY);
+      virtual ~BicubicInterpolator();
 
     protected:
       virtual const std::vector<double>

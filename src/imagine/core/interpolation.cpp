@@ -59,4 +59,5 @@ namespace Imagine {
     return coefficients[0] + coefficients[1] * x +
            coefficients[2] * y + coefficients[3] * x * y;
   }
+
 }
