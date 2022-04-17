@@ -3,7 +3,6 @@ set(CPP_FILES_LIB
      core/coefficients.cpp
      core/image.cpp
      mesh/mesh.cpp
-     utils/derivatives.hpp
    )
 
 set(CPP_FILES_ALL
@@ -17,7 +16,6 @@ SET(INCLUDE_DIR
     ${CMAKE_CURRENT_SOURCE_DIR}/utils
     ${CMAKE_CURRENT_SOURCE_DIR}/primitives
     ${CMAKE_CURRENT_SOURCE_DIR}/mesh
-    ${CMAKE_CURRENT_SOURCE_DIR}/derivatives
    )
 
 set(EXTRA_COMP_FLAGS

@@ -14,7 +14,6 @@ add_executable(
   main.cpp
   test-interpolator.cpp
   test-coeffTable.cpp
-  test-derivatives.cpp
   test-mesh.cpp
 )
 

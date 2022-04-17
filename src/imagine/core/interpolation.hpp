@@ -1,7 +1,6 @@
 #pragma once
 
 #include "coefficients.hpp"
-#include "derivatives.hpp"
 #include <memory>
 #include <vector>
 
