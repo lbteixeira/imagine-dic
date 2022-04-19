@@ -45,6 +45,12 @@ namespace Imagine {
       virtual ~BilinearInterpolator();
 
     protected:
+      // Order of the neighbor pixels:
+      // {A, B, C, D}
+      // A-----B
+      // |     |
+      // |     |
+      // C-----D
       virtual const std::vector<double>
       _calculateCoefficients(const vector_px& neighborPx) override;
 
@@ -62,6 +68,18 @@ namespace Imagine {
       virtual ~BicubicInterpolator();
 
     protected:
+      // Order of the neighbor pixels:
+      // {A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P}
+      // The sub-pixel to be interpolated is located in the square formed by
+      // F-G-J-K.
+      //
+      // A---B---C---D
+      // |   |   |   |
+      // E---F---G---H
+      // |   |   |   |
+      // I---J---K---L
+      // |   |   |   |
+      // M---N---O---P
       virtual const std::vector<double>
       _calculateCoefficients(const vector_px& neighborPx) override;
 
