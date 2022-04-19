@@ -41,8 +41,8 @@ namespace Imagine {
 
     f1 = neighborPx[0][2];
     f2 = neighborPx[1][2];
-    f3 = neighborPx[3][2];
-    f4 = neighborPx[2][2];
+    f3 = neighborPx[2][2];
+    f4 = neighborPx[3][2];
 
     std::vector<double> result = {f1, f2-f1, f3-f1, f4-f2-f3+f1};
 
