@@ -1,7 +1,6 @@
 #include "interpolation.hpp"
-#include <cmath>
+#include <cassert>
 #include <memory>
-#include <tuple>
 #include <vector>
 
 typedef std::vector<std::array<int, 3>> vector_px;
@@ -53,18 +52,13 @@ namespace Imagine {
   BilinearInterpolator::_interpolate(const Point<double>& p,
       const std::vector<double>& coefficients) const {
 
-    double x, y;
+    double x = p.coordX - int(p.coordX);
+    double y = p.coordY - int(p.coordY);
 
-    x = p.coordX - std::floor(p.coordX);
-    y = p.coordY - std::floor(p.coordY);
-
-    if (p.coordX != 0 && x == 0) {
-      x = p.coordX;
-    }
-
-    if (p.coordY != 0 && y == 0) {
-      y = p.coordY;
-    }
+    // x and y can't be zero, because that would mean that point p is at an
+    // integer pixel location, where no interpolation is required.
+    assert(x != 0);
+    assert(y != 0);
 
     return coefficients[0] + coefficients[1] * x +
            coefficients[2] * y + coefficients[3] * x * y;
