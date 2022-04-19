@@ -29,21 +29,25 @@ TEST_CASE("Bilinear interpolation"){
       double expected = 135.9;
       REQUIRE(std::abs(result - expected) < abs_tolerance);
     };
+  };
 
-    SECTION("Point 3 - Located exactly at the upper left corner"){
-      Point<double> p1(0, 0);
+  SECTION("Points NOT in the unit square"){
+    std::vector<std::array<int,3>>
+    neighborPx = {{10, 50, 68}, {11, 50, 71}, {10, 51, 209}, {11, 51, 180}};
+
+    SECTION("Point 1"){
+      Point<double> p1(10.5, 50.2);
       double result = interpolator.interpolate(p1, neighborPx);
-      double expected = 68;
+      double expected = 94.5;
       REQUIRE(std::abs(result - expected) < abs_tolerance);
     };
 
-    SECTION("Point 4 - Located exactly at the lower right corner"){
-      Point<double> p1(1, 1);
+    SECTION("Point 2"){
+      Point<double> p1(10.2, 50.5);
       double result = interpolator.interpolate(p1, neighborPx);
-      double expected = 180;
+      double expected = 135.9;
       REQUIRE(std::abs(result - expected) < abs_tolerance);
     };
   };
-
 }
 
