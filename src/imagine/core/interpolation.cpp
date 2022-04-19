@@ -53,8 +53,18 @@ namespace Imagine {
   BilinearInterpolator::_interpolate(const Point<double>& p,
       const std::vector<double>& coefficients) const {
 
-    double x = p.coordX - std::floor(p.coordX);
-    double y = p.coordY - std::floor(p.coordY);
+    double x, y;
+
+    x = p.coordX - std::floor(p.coordX);
+    y = p.coordY - std::floor(p.coordY);
+
+    if (p.coordX != 0 && x == 0) {
+      x = p.coordX;
+    }
+
+    if (p.coordY != 0 && y == 0) {
+      y = p.coordY;
+    }
 
     return coefficients[0] + coefficients[1] * x +
            coefficients[2] * y + coefficients[3] * x * y;
