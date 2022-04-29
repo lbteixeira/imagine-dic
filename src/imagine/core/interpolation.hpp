@@ -56,7 +56,7 @@ namespace Imagine {
 
       virtual double
       _interpolate(const Point<double>& p,
-          const std::vector<double>& neighborPx) const override;
+          const std::vector<double>& coefficients) const override;
   };
 
   /**
@@ -85,7 +85,7 @@ namespace Imagine {
 
       virtual double
       _interpolate(const Point<double>& p,
-          const std::vector<double>& neighborPx) const override;
+          const std::vector<double>& coefficients) const override;
   };
 }
 
