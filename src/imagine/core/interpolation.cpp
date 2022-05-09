@@ -111,16 +111,19 @@ namespace Imagine {
     f_0_1 = neighborPx[9][2];
     f_1_1 = neighborPx[10][2];
 
+    // Derivatives with respect to x
     fx_0_0 = double(neighborPx[6][2] - neighborPx[4][2])  / 2;
     fx_1_0 = double(neighborPx[7][2] - neighborPx[5][2])  / 2;
     fx_0_1 = double(neighborPx[10][2] - neighborPx[8][2]) / 2;
     fx_1_1 = double(neighborPx[11][2] - neighborPx[9][2]) / 2;
 
+    // Derivatives with respect to y
     fy_0_0 = double(neighborPx[9][2] - neighborPx[1][2])  / 2;
     fy_1_0 = double(neighborPx[10][2] - neighborPx[2][2]) / 2;
     fy_0_1 = double(neighborPx[13][2] - neighborPx[5][2]) / 2;
     fy_1_1 = double(neighborPx[14][2] - neighborPx[6][2]) / 2;
 
+    // Mixed derivatives
     fxy_0_0 = double(neighborPx[0][2] - neighborPx[2][2] + neighborPx[10][2] - neighborPx[8][2])   / 4;
     fxy_1_0 = double(neighborPx[1][2] - neighborPx[3][2] + neighborPx[11][2] - neighborPx[9][2])   / 4;
     fxy_0_1 = double(neighborPx[4][2] - neighborPx[6][2] + neighborPx[14][2] - neighborPx[12][2])  / 4;

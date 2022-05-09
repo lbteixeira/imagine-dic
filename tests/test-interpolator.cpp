@@ -4,7 +4,7 @@
 
 using namespace Imagine;
 
-// The expected results for these tests were taken from GNU Octave's interp2
+// The expected results for these tests were taken from Matlab's interp2
 // function.
 
 TEST_CASE("Bilinear interpolation"){
